@@ -7,5 +7,5 @@ Data Structures and Algorithms I've implemented myself in Python and Java for co
 
 ## Hashtables/Hashmaps/Hashsets/Dictionaries
 * maps keys to values (stored in linkedlists or arraylists to avoid collisions) with O(1) lookup
-* 
+* put (key, value) into hash table and get(key) value 
 ![Alt text](/images/hashtable.png)
