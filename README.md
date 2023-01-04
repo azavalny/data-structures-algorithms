@@ -1,6 +1,8 @@
 # Data Structures & Algorithms
 Data Structures and Algorithms I've implemented myself in Python and Java for coding interview preparation
 
+Graphics made by [Charlie Stuart](https://charlierose.dev/ref/cs260.pdf) 
+
 
 ## Arraylists/Lists/Dynamic Arrays
 * O(1) access by index, O(n) by searching (if unsorted)
