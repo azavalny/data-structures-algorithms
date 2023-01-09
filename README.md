@@ -35,17 +35,17 @@ Essential:
 ### Merge Sort
 * O(n log (n))
 * divide array in half, sorts each half and then merge, merge sort the halves until you end up merge sorting single element arrays
-![Alt text](/images/mergesort.PNG)
+![Alt text](/images/mergesort.png)
 
 ### Quick Sort
 * O(n log (n)), but O(n^2) worst case
 * pick random element and use it to partition the array such that all elements that are less than the partition come before and all elements greater come after. Repeatedly partioning the array will become sorted
-![Alt text](/images/quicksort.PNG)
+![Alt text](/images/quicksort.png)
 
 ### Radix Sort
 * O(kn) for k passes
 * iterate through each digit and group numbers together by each digit
-![Alt text](/images/radixsort.PNG)
+![Alt text](/images/radixsort.png)
 
 ### Linear Search
 * O(n)
