@@ -30,6 +30,37 @@ Data Structures and Algorithms I've implemented myself in Python and Java for co
 ### Priority Queues
 * elements added via comparison and have ordering or weighting to them
 
+## Sorting & Searching Algorithms
+Essential:
+### Merge Sort
+* O(n log (n))
+* divide array in half, sorts each half and then merge, merge sort the halves until you end up merge sorting single element arrays
+![Alt text](/images/mergesort.PNG)
+
+### Quick Sort
+* O(n log (n)), but O(n^2) worst case
+* pick random element and use it to partition the array such that all elements that are less than the partition come before and all elements greater come after. Repeatedly partioning the array will become sorted
+![Alt text](/images/quicksort.PNG)
+
+### Radix Sort
+* O(kn) for k passes
+* iterate through each digit and group numbers together by each digit
+![Alt text](/images/radixsort.PNG)
+
+### Linear Search
+* O(n)
+### Binary Search
+* O(log (n))
+* only for sorted arrays & lists
+
+Nice to Know:
+### Bubble Sort
+* O(n^2)
+* start at the beginning and swap first two elements if first is greater than the 2nd, then do the same while iterating through the rest of the pairs
+### Selection Sort
+* O(n^2)
+* find smallest element with a linear scan and move it to the front, then do the same for the 2nd smallest, 3rd,...nth smallest untill the elements are in place
+
 ## Trees
 * Hierarchical data structure with root node having zero or more child nodes, and each child node has zero or more child nodes,...
 * acyclic graphs
