@@ -36,8 +36,9 @@ Data Structures and Algorithms I've implemented myself in Python and Java for co
 Essential:
 ### Merge Sort
 * O(n log (n))
-* divide array in half, sorts each half and then merge, merge sort the halves until you end up merge sorting single element arrays
+* divide array in half, sorts each half and then merge sorts the halves of those halves,... merge sort the halves until you end up merge sorting single element arrays
 ![Alt text](/images/mergesort.png)
+* the log (n) comes from the dividing of the array in half, and the n comes from having to lineary search the halves for out of order pairs as you merge them back together
 
 ### Quick Sort
 * O(n log (n)), but O(n^2) worst case
