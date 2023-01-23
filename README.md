@@ -42,8 +42,9 @@ Essential:
 
 ### Quick Sort
 * O(n log (n)), but O(n^2) worst case
-* pick random element and use it to partition the array such that all elements that are less than the partition come before and all elements greater come after. Repeatedly partioning the array will become sorted
+* pick random element and use it to partition the array such that all elements that are less than the partition come before and all elements greater come after. Repeatedly partioning the array will become sorted, as you swap any elements out of order
 ![Alt text](/images/quicksort.png)
+* Quick Sort does everything in place and is **much more memory efficient than merge sort**
 
 ### Radix Sort
 * O(kn) for k passes
