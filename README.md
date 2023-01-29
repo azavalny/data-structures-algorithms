@@ -10,6 +10,7 @@ Data Structures and Algorithms I've implemented myself in Python and Java for co
 ![Alt text](/images/hashtable.png)
 
 * Dictionaries are just Hash Tables without a hash function, just the literal string key mapping to a value
+* Useful for identifying duplicates or keeping track of only distinct values
 
 ## Linked Lists
 * non contigous sequence of nodes that hold data and point to the next node (and previous node if working with a doubly linked list)
