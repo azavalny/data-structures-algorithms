@@ -84,6 +84,19 @@ Nice to Know:
 * binary tree with every node has its left descendants less than or equal to itself, and its right descendants greater than or equal to itself
 ![Alt text](/images/bst.png)
 
+### Red-Black Trees
+* self balancing binary search tree
+
+![Alt text](/images/red-blacktrees.png)
+
+1. every node is red or black
+2. root is black
+3. every leaf is null and black
+4. red node has both its children black
+5. all paths have same number of black nodes in between
+
+* if insertion causes violation, move violating node up tree until its fixed
+
 ### Heaps
 * complete binary tree (filled left to right, except for maybe the last level) where each node is either smaller (Min Heap) or greater (Max Heap) than its children
   * this is a max heap ↓
