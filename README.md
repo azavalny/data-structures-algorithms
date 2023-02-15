@@ -92,6 +92,8 @@ Nice to Know:
 * for a min heap, the root is the minimum, for a max heap the root is the maximum
 ![Alt text](/images/heapshape.png)
 
+* useful for fast min/max computations
+
 ### Tries
 * n-array tree with each node a character of the alphabet, with paths down the tree representing words
 * are implemented with additional terminating nodes to indicate the end of a word down a path
