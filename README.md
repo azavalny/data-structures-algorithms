@@ -6,7 +6,7 @@ Data Structures and Algorithms I've implemented myself in Python and Java for co
 
 ## Hashtables/Hashmaps/Hashsets/Dictionaries
 * maps keys to values with O(1) lookup 
-* stored in linkedlists or arraylists to avoid collisions, known as **chaining**, or use **open addressing** to associate keys with sequences and store the new key in the next open item in the sequence
+* stored in linkedlists or arraylists to avoid collisions, known as **chaining** with an **Open Hash Table**, or use **open addressing** to associate keys with sequences and store the new key in the next open item in the sequence with a **Closed Hash Table**
 * put (key, value) into hash table and get(key) value 
 ![Alt text](/images/hashtable.png)
 
