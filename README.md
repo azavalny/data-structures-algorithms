@@ -116,8 +116,8 @@ Nice to Know:
 
 
 ## Graphs
-* collection of nodes, vertices, containing data connected through edges
-* edges can be directed (one way travel and hierarchy) or undirected where travel is allowed in both directions
+* collection of **verticies** (nodes) containing data connected through **edges**
+* edges can be directed, undirected, weighted, and unweighted
 * a **path** is sequential vertices connected by edges
 * a **cycle** a path with repeated vertices
 ![Alt text](/images/graph.png)
