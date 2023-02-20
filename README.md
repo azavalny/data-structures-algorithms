@@ -105,7 +105,8 @@ Nice to Know:
 * for a min heap, the root is the minimum, for a max heap the root is the maximum
 ![Alt text](/images/heapshape.png)
 
-* useful for fast min/max computations
+* useful for fast min/max computations in O(1)
+* O(n) initialization and O(logn) insertion and deletion
 
 ### Tries
 * n-array tree with each node a character of the alphabet, with paths down the tree representing words
