@@ -69,7 +69,7 @@ Nice to Know:
 
 ## Trees
 * Hierarchical data structure with root node having zero or more child nodes, and each child node has zero or more child nodes,...
-* acyclic graphs
+* acyclic graphs with n-1 edges for n nodes
 * leafs are the nodes with no children
 * depth is the number of edges from the root, height is the number of edges from the nearest leaf, tree has an overal height as the number of edges from the deepest leaf to the root
 ![Alt text](/images/tree.png)
@@ -124,15 +124,16 @@ Nice to Know:
 
 * stored as adjacency list or adjacency matrix where a value or boolean value indicates an edge from node i to j    
 ![Alt text](/images/adjacencymatrix.png)
+* adjacency matricies have a constant O(1) edge lookup, but always uses O(n^2) memory
+* adjacency lists have O(n) edge lookup, but best case O(n) memory, worst case O(n^2)
 
 ### Breadth First Search
-* explore each child before going to any of their children
+* explore each child before going to any of their children in O(m + n) for m verticies and n edges
 * add each child to a **queue** and then go through each child
 ![Alt text](/images/bfs.png)
-* better for finding shortest path between 2 nodes
-
+* better for finding shortest path between 2 nodes because it discovers verticies in increasing order of distance, and which verticies are reachable from a node (quickly finds its neighbors)
 ### Depth First Search
-* explore each branch completely before moving on to the next branch
-* implemented recursively   
+* explore each branch completely before moving on to the next branch in O(m + n) for m verticies and n edges
+* implemented with a **stack** or recursively
 ![Alt text](/images/dfs.png)
 * better if we want to visit every node in a graph
