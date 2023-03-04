@@ -1,5 +1,5 @@
 # Data Structures & Algorithms
-Data Structures and Algorithms I've implemented myself in Python and Java for coding interview preparation
+Data Structures and Algorithms I've implemented myself in Python and Java for coding interview preparation that come from a C-based Data Structures and Algorithms course from University
 
 ## Arraylists/Lists/Dynamic Arrays
 * O(1) access by index, O(n) by searching (if unsorted)
@@ -137,11 +137,14 @@ Nice to Know:
 
 
 ## Graphs
-* collection of **verticies** (nodes) containing data connected through **edges**
+* collection of **verticies** (nodes) containing data connected through **edges**, $$G = (V, E)$$
 * edges can be directed, undirected, weighted, and unweighted
-* a **path** is sequential vertices connected by edges
-* a **cycle** a path with repeated vertices
+* a **path** is a sequence of vertices connected by edges
+* a **cycle** a path where the first and last vertex in a sequence are connected, forming a loop
 ![Alt text](/images/graph.png)
+
+* an undirected graph has n(n+1)/2 maximum edges while a directed graph has (n+1)n edges both for n nodes
+* an undirected graph has sum of all degrees equal to twice the number of edges and for a directed graph it has the sum of all degrees equal to the number of edges
 
 * stored as adjacency list or adjacency matrix where a value or boolean value indicates an edge from node i to j    
 ![Alt text](/images/adjacencymatrix.png)
@@ -149,12 +152,64 @@ Nice to Know:
 * adjacency lists have O(n) edge lookup, but best case O(n) memory, worst case O(n^2)
 
 ### Breadth First Search
-* explore each child before going to any of their children in O(m + n) for m verticies and n edges
+* explore each child before going to any of their children in O(V + E) for V verticies and E edges since we visit every vertex once
+  * important detail: runtime is O(V + 2E) for undirected graphs because you visit every edge twice, O(V + E) for directed graphs because you visit every edge once
 * add each child to a **queue** and then go through each child
 ![Alt text](/images/bfs.png)
-* better for finding shortest path between 2 nodes because it discovers verticies in increasing order of distance, and which verticies are reachable from a node (quickly finds its neighbors)
+* better for finding shortest path between 2 nodes than DFS because it discovers verticies in increasing order of distance, and which verticies are reachable from a node (quickly finds its neighbors)
+```
+def bfs(graph, node):
+ visited = []
+ queue = []
+ visited.append(node)
+ queue.append(node)
+ 
+ while len(queue) > 0:# keep adding to the queue and exploring
+   s = queue.pop(0) #s is the current node
+   print(s)
+   for n in graph[s]: #look at all the neighboring nodes of s
+     if n not in visited:
+       visited.append(n)
+       queue.append(n)
+```
+* runtime might seem like O(V^2 + E) (also seems like it for depth first search) because we have a nested loop, but in amortized analysis we show you don't actually visit each vertex more than once because the runtime is the degree of the current vertex + 1
+
+
 ### Depth First Search
-* explore each branch completely before moving on to the next branch in O(m + n) for m verticies and n edges
+* explore each branch completely before moving on to the next branch in O(V + E) for V verticies and E edges
 * implemented with a **stack** or recursively
 ![Alt text](/images/dfs.png)
-* better if we want to visit every node in a graph
+* better than BFS we want to visit every node in a graph
+* imposes a tree structure of the graph as it visits down a recursion tree
+
+```
+ # recursively (better)
+ visited = []
+ def dfs(graph, node, visited):
+   if node not in visited:
+      print(node)
+      visited.append(node)
+      for n in graph[node]:
+         dfs(graph, n, visited)
+         
+# iteratively
+def dfs(graph, node):
+  visited = []
+  stack = []
+  visited.append(node)
+  stack.append(node)
+  
+  while len(stack) > 0:
+    s = stack.pop(0)
+    if n not in visited:
+        print(s)
+        visited.append(n)
+    for n in reversed(graph(s)): #because a stack is first in first out, we visit first seen paths
+      stack.apppend(n)
+```
+
+### Directed Acyclic Graphs
+Properties:
+* Tree edges
+  * 
+* 
