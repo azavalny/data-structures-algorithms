@@ -6,7 +6,7 @@ Data Structures and Algorithms I've implemented myself in Python and Java for co
 
 ## Hashtables/Hashmaps/Hashsets/Dictionaries
 * maps keys to values with O(1) lookup 
-* stored in linkedlists or arraylists to avoid collisions, known as **chaining** with an **Open Hash Table**, or use **open addressing** to associate keys with sequences and store the new key in the next open item in the sequence with a **Closed Hash Table**
+* stored in linkedlists or arraylists to avoid collisions, known as **chaining** with an **Open Hash Table**, or use **open addressing** to associate keys with sequences and store the new key in the next open item in the sequence with a **Closed Hash Table** (though you need to double the size and rehash values if you run out of space)
 * put (key, value) into hash table and get(key) value 
 ![Alt text](/images/hashtable.png)
 
@@ -75,30 +75,41 @@ Nice to Know:
 ![Alt text](/images/tree.png)
 
 * Binary trees have at most 2 children and the following properties:
-  * Complete binary tree has every level fully filled with children except possibly the last level which is filled left to right
-  * Full binary trees have all nodes with either 0 or 2 children, but never 1
-  * Perfect binary trees have all nodes with 2 children and all leafs are at the same level
+  * **Complete** binary tree has every level fully filled with children except possibly the last level which is filled left to right
+  * **Full** binary trees have all nodes with either 0 or 2 children, but never 1
+  * **Perfect** binary trees have all nodes with 2 children and all leafs are at the same level
+
+* 3 ways to traverse a tree (do this recursively):
+  * Preorder: Node, Left, Right
+  * Inorder: Left, Node, Right
+  * Postorder: Left, Right, Node
 
 
 ### Binary Search Trees
 * binary tree with every node has its left descendants less than or equal to itself, and its right descendants greater than or equal to itself
+* O(logn) search
 ![Alt text](/images/bst.png)
 
+* to delete a node with 2 children, replace the node with either the minimum of the left subtree or maximum of the right subtree; either takes O(n)
+* perfect BST has height = 2^(n+1) -1 nodes, for n nodes
+
 ### Red-Black Trees
-* self balancing binary search tree
+* **self balancing** binary search tree
 
 ![Alt text](/images/red-blacktrees.png)
 
 1. every node is red or black
-2. root is black
-3. every leaf is null and black
-4. red node has both its children black
-5. all paths have same number of black nodes in between
+2. **root** is **black**
+3. **every leaf** is **null and black**
+4. **red node** has **both** its **children black**
+5. all paths from a node to a leaf have same the number of black nodes in between (black-height is constant)
 
-* if insertion causes violation, move violating node up tree until its fixed
+* rotating red black tree is done in O(1) pointer operations
+* to insert a node, color it red
+  * if insertion causes violation, in one of 3 cases, move violating node up tree until its fixed
 
 ### Heaps
-* complete binary tree (filled left to right, except for maybe the last level) where each node is either smaller (Min Heap) or greater (Max Heap) than its children
+* complete binary tree (filled left to right, except for maybe the last level) where each node is either smaller (**Min Heap**) or greater (**Max Heap**) than its children
   * this is a max heap ↓
   
 ![This is a max heap](/images/heap.png)
@@ -107,6 +118,16 @@ Nice to Know:
 
 * useful for fast min/max computations in O(1)
 * O(n) initialization and O(logn) insertion and deletion
+  * we need to bubble elements up/down with a min/max heapify recursive function (also called upheaping and downheaping)
+
+
+### Huffman Coding Tree
+* store characters and their frequencies of a string in a min heap; typically implemented as an array
+  * repeatedly remove the 2 smallest nodes in the heap and create a parent node to combine them and insert the parent node back into the heap
+  * your heap should have 1 node at the end which is the root node to your huffman tree, located at the first index (the other indicies are merely pointers)
+* once you built your tree, generate codes for each character by going down the tree and concatenating a 0 for a left child and 1 for a right child until you reach a leaf; then use your code table to encode a value
+![Alt text](/images/huffmantree.png)
+
 
 ### Tries
 * n-array tree with each node a character of the alphabet, with paths down the tree representing words
