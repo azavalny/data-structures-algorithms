@@ -1,5 +1,5 @@
 # Data Structures & Algorithms
-Data Structures and Algorithms I've implemented myself in Python and Java for coding interview preparation that come from a C-based Data Structures and Algorithms course from University
+Data Structures and Algorithms I've implemented myself in Python and Java for coding interview preparation that come from a C-based Data Structures and Algorithms course from University. I try to state definitions and usecases in my own words to help clarify common questions and precisely compare different algorithms and data structures.
 
 ## Arraylists/Lists/Dynamic Arrays
 * O(1) access by index, O(n) by searching (if unsorted)
@@ -175,7 +175,8 @@ def bfs(graph, node):
 * runtime might seem like O(V^2 + E) (also seems like it for depth first search) because we have a nested loop, but in amortized analysis we show you don't actually visit each vertex more than once because the runtime is the degree of the current vertex + 1
 
 
-### Depth First Search
+### Depth First Search 
+(DFS)
 * explore each branch completely before moving on to the next branch in O(V + E) for V verticies and E edges
 * implemented with a **stack** or recursively
 ![Alt text](/images/dfs.png)
@@ -187,10 +188,10 @@ def bfs(graph, node):
  visited = []
  def dfs(graph, node, visited):
    if node not in visited:
-      print(node)
-      visited.append(node)
-      for n in graph[node]:
-         dfs(graph, n, visited)
+     print(node)
+     visited.append(node)
+     for n in graph[node]:
+       dfs(graph, n, visited)
          
 # iteratively
 def dfs(graph, node):
@@ -202,14 +203,23 @@ def dfs(graph, node):
   while len(stack) > 0:
     s = stack.pop(0)
     if n not in visited:
-        print(s)
-        visited.append(n)
+      print(s)
+      visited.append(n)
     for n in reversed(graph(s)): #because a stack is first in first out, we visit first seen paths
       stack.apppend(n)
 ```
 
+* when doing a DFS on a directed graph, we can have multiple types of edges (u,v):
+  * Tree eges where v was discovered by exploring edge (u,v)
+  * Forward edge v is a proper descendant of u (skips ahead in path)
+  * **Back edge** where v is an ancestor of u (skips backward in path, points to an edge previously visited of u)
+  * Cross edge is where u and v are not ancestors or descendants of one another (edge usually connects between different trees)
+* time stamps in a DFS run allow you to determine ancestor/descent relation and if there's any **cycles**
+  * **existence of a back edge** proves there's a **cycle** and **no back edges** proves the graph is **acylic**
+
 ### Directed Acyclic Graphs
-Properties:
-* Tree edges
-  * 
-* 
+* type of graph (directed and acylic) with a start and an end node useful for describing ordering constraints, precedence, dependencies, etc
+* A **Topological Sort** can be performed to sort the verticies of a directed acyclic graph with DFS in O(V+E), so there are no back edges, into a linear ordering of the verticies
+
+![Alt text](/images/DAG.png)
+* strongly connected components of a directed graph has every pair of verticies u and v reachable from each other
