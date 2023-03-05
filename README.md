@@ -176,7 +176,6 @@ def bfs(graph, node):
 
 
 ### Depth First Search 
-(DFS)
 * explore each branch completely before moving on to the next branch in O(V + E) for V verticies and E edges
 * implemented with a **stack** or recursively
 ![Alt text](/images/dfs.png)
@@ -223,3 +222,15 @@ def dfs(graph, node):
 
 ![Alt text](/images/DAG.png)
 * strongly connected components of a directed graph has every pair of verticies u and v reachable from each other
+  * to find them, call DFS to compute finishing times and call DFS again on the graph but invert the directed edges and output the verticies of each tree in the second DFS as a seperate strongly connected component all done in O(V+E)
+
+### Minimum Spanning Trees
+* tree with minimum total weights that spans all nodes in a weighted graph
+* calculated with a **Greedy Algorithm** by choosing the locally optimal solution
+  * as a result, both algorithms find a minimum spanning tree, not the most minimum spanning tree
+* 2^V possible trees and we want to have V-1 edges in our tree
+* 
+![Alt-text](/images/mst.PNG)
+**Kruskal's Algorithm**
+* sort edges by weight and include edge in MST if it dosen't form a cycle with the edges already taken
+
