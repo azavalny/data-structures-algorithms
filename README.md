@@ -227,10 +227,14 @@ def dfs(graph, node):
 ### Minimum Spanning Trees
 * tree with minimum total weights that spans all nodes in a weighted graph
 * calculated with a **Greedy Algorithm** by choosing the locally optimal solution
-  * as a result, both algorithms find a minimum spanning tree, not the most minimum spanning tree
 * 2^V possible trees and we want to have V-1 edges in our tree
-* 
 ![Alt-text](/images/mst.PNG)
 **Kruskal's Algorithm**
-* sort edges by weight and include edge in MST if it dosen't form a cycle with the edges already taken
+* at each vertex sort edges by weight and include edge in MST if it dosen't form a cycle with the edges already taken (using set unions)
+* repeat until there are V-1 edges
+**Prim's Algorithm**
+* at each vertex add a 2nd vertex connected to the first through a minimum weight edge and keep connecting descendent nodes with smallest edges using a min heap
 
+* both algorithms find a minimum spanning tree in O(ElogV), not the most minimum spanning tree
+* Prim's is better if you know nothing about your edges
+* Kruskal's is better if your edges are already sorted or somewhat sorted
