@@ -1,7 +1,7 @@
 # Data Structures & Algorithms
 Data Structures and Algorithms reference guide that come from a C-based Data Structures and Algorithms course. I try to state definitions and usecases in my own words to help clarify common questions and precisely compare different algorithms and data structures.
 
-Some illustrations below are taken from one of my favorite TA's of all time and [their notes from this class](https://charlierose.dev/ref/cs260.pdf)
+Most of the illustrations below are taken from one of my favorite TA's of all time and [their notes from this class](https://charlierose.dev/ref/cs260.pdf)
 
 ## Arraylists/Lists/Dynamic Arrays
 * O(1) access by index, O(n) by searching (if unsorted)
