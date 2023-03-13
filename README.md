@@ -181,7 +181,7 @@ def bfs(graph, node):
 * explore each branch completely before moving on to the next branch in O(V + E) for V verticies and E edges
 * implemented with a **stack** or recursively
 ![Alt text](/images/dfs.png)
-* better than BFS we want to visit every node in a graph
+* better than BFS if we want to visit every node in a graph
 * imposes a tree structure of the graph as it visits down a recursion tree
 
 ```
