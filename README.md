@@ -1,5 +1,5 @@
 # Data Structures & Algorithms
-Data Structures and Algorithms I've implemented myself in Python and Java for coding interview preparation that come from a C-based Data Structures and Algorithms course from University. I try to state definitions and usecases in my own words to help clarify common questions and precisely compare different algorithms and data structures.
+Data Structures and Algorithms reference guide that come from a C-based Data Structures and Algorithms course from University. I try to state definitions and usecases in my own words to help clarify common questions and precisely compare different algorithms and data structures.
 
 ## Arraylists/Lists/Dynamic Arrays
 * O(1) access by index, O(n) by searching (if unsorted)
