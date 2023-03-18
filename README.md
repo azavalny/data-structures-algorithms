@@ -225,6 +225,8 @@ def dfs(graph, node):
 ![Alt text](/images/DAG.png)
 * strongly connected components of a directed graph has every pair of verticies u and v reachable from each other
   * to find them, call DFS to compute finishing times and call DFS again on the graph but invert the directed edges and output the verticies of each tree in the second DFS as a seperate strongly connected component all done in O(V+E)
+* Kosaraju's Algorithm gets the number of strongly connected components in O(V)
+  * loop through pairs of verticies and see if a grouping of pair of nodes can be reached from each other, if so that grouping is a strongly connected component 
 
 ### Minimum Spanning Trees
 * tree with minimum total weights that spans all nodes in a weighted graph
@@ -240,3 +242,23 @@ def dfs(graph, node):
 * both algorithms find a minimum spanning tree in O(ElogV), not the most minimum spanning tree
 * Prim's is better if you know nothing about your edges
 * Kruskal's is better if your edges are already sorted or somewhat sorted
+
+# Shortest Path Algorithms
+Basic ideas:
+* sub paths of shortest paths should themselves be shortest paths otherwise the overall path isn't a shortest path
+* triangle inequality: 
+  * $\delta (s,v) \leq \delta (s,u)+ \delta (u,v)$
+  * adding a detour to a path will usually increase the path length than going directly to the destination
+
+### Bellman-Ford Algorithm
+* finds shortest path from a source to all other verticies in a weighted graph in O(VE) (with no negative cycles)
+* set all nodes to $\infty$
+* iterate through all verticies and set their values to be the shortest path from the source found by adding the values of the previous nodes on the same path
+  * we **"Relax"** the nodes by comparing the new path and the old path we initially found and choosing the smaller of the paths to set the next node to be, otherwise we don't change the next node
+  * intuitively, after the first iteration we keep checking if the edges offer any improvement to the shortest path 
+* ends the program and returns if there exists at least one negative weight cycle
+* can terminate early depending on how smart you pick the order of edges to traverse if the edges don't improve anything
+
+### Dijkstra's Algorithm
+* finds shortest path from a source to all other verticies in a weighted graph in O(Vlogv + ElogV) (with no negative weights)
+![Alt-text](/images/lovedijk.PNG)
