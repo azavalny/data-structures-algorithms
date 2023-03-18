@@ -253,12 +253,19 @@ Basic ideas:
 ### Bellman-Ford Algorithm
 * finds shortest path from a source to all other verticies in a weighted graph in O(VE) (with no negative cycles)
 * set all nodes to $\infty$
-* iterate through all verticies and set their values to be the shortest path from the source found by adding the values of the previous nodes on the same path
+* starts with an estimate and re-examines edges to converge it to the shortest paths
+* iterate through all verticies and re-examine all edges
+  *set their values to be the shortest path from the source found by adding the values of the previous nodes on the same path
   * we **"Relax"** the nodes by comparing the new path and the old path we initially found and choosing the smaller of the paths to set the next node to be, otherwise we don't change the next node
+  * **there can only be |V| -1 edges in a path**, otherwise |V| or more indicates a cycle since we would have a repeated vertex
   * intuitively, after the first iteration we keep checking if the edges offer any improvement to the shortest path 
 * ends the program and returns if there exists at least one negative weight cycle
+  * a negative cycle implies there dosen't exist a shortest path
 * can terminate early depending on how smart you pick the order of edges to traverse if the edges don't improve anything
 
 ### Dijkstra's Algorithm
 * finds shortest path from a source to all other verticies in a weighted graph in O(Vlogv + ElogV) (with no negative weights)
-![Alt-text](/images/lovedijk.PNG)
+![Alt-text](/images/lovedijk.png)
+* greedy algorithm that uses a min heap to select smallest edge to visit
+* set all nodes to $\infty$
+* examine edges leaving node and go to the vertex pointed by the smallest edge, and 
