@@ -256,7 +256,7 @@ Basic ideas:
 * starts with an estimate and re-examines edges to converge it to the shortest paths
 * iterate through all verticies and re-examine all edges
   *set their values to be the shortest path from the source found by adding the values of the previous nodes on the same path
-  * we **"Relax"** the nodes by comparing the new path and the old path we initially found and choosing the smaller of the paths to set the next node to be, otherwise we don't change the next node
+  * we **"Relax"** the edges by comparing the new path and the old path we initially found and choosing the smaller of the paths to set the next node to be, otherwise we don't change the next node
   * **there can only be |V| -1 edges in a path**, otherwise |V| or more indicates a cycle since we would have a repeated vertex
   * intuitively, after the first iteration we keep checking if the edges offer any improvement to the shortest path 
 * ends the program and returns if there exists at least one negative weight cycle
@@ -266,6 +266,33 @@ Basic ideas:
 ### Dijkstra's Algorithm
 * finds shortest path from a source to all other verticies in a weighted graph in O(Vlogv + ElogV) (with no negative weights)
 ![Alt-text](/images/lovedijk.png)
-* greedy algorithm that uses a min heap to select smallest edge to visit
+* **greedy algorithm** that uses a min heap to select smallest edge to visit
 * set all nodes to $\infty$
-* examine edges leaving node and go to the vertex pointed by the smallest edge, and 
+* examine edges leaving node and choose the smallest edge that hasn't been seen before:
+  * gets the smallest edge through extract min with a min heap
+    * we also upheap the neighboring edges which takes O(logV) so that extract min is in O(1)
+  * set next node to values of shortest path by relaxing the neighboring edges of the min edge we just extracted
+     * unlike in Bellman-Ford, we don't relax edges V times, we do it in O(ElogV) for each vertex V
+* Dijkstra's dosen't work work negative edges, because once it visits a node it assumes its found the shortest path and won't revisit it
+  *which means that if a negative edge exists somewhere it may not be found and Dijkstra's won't create the actual shortest path for verticies that could be shortened with negative edges
+  * This is an issue of the Greedy approach since we assumed that the minimality won't changed if we add a number to any vertex path, which is only true for positive numbers
+  
+### Floyd Warshall Algorithm
+* finds the shortest paths between all pairs of verticies in O(V^3) in matrix form
+* initialize entries to neighboring edges
+* for each pair of nodes find the cost of the shortest path by adding intermediary nodes and see if they improve the shortest path:
+  * given $D^{k-1}(u,v)$, we want to see if:
+  $$D^{k}(u,v) = D^{k-1}(u,k) + D^{k-1}(k,v)$$
+  for an intermediate node k
+  * if an intermediary node makes a shorter path we update the shortest path for that pair of verticies u and v
+  * else shortest path remains the same
+* since each vertex is considered as an intermediary node at some point the algorith runs the calculation in a triple nested for loop:
+```
+# If D is the adjacency matrix
+for v in V:
+   for i in V:
+     for j in V[0]:
+        D[i,j] = min(D[i,j], D[i,k] + D[k, j])
+```
+* Floyd Warshall can **detect negative cycles** if the **diagonals are negative**
+* by comparison, using Dijkstra's to find all pair shortest paths would take O(V^2 * VlogV) and Bellman ford O(V^2 * VE)
