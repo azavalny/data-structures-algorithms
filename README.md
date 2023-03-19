@@ -236,6 +236,7 @@ def dfs(graph, node):
 **Kruskal's Algorithm**
 * at each vertex sort edges by weight and include edge in MST if it dosen't form a cycle with the edges already taken (using set unions)
 * repeat until there are V-1 edges
+
 **Prim's Algorithm**
 * at each vertex add a 2nd vertex connected to the first through a minimum weight edge and keep connecting descendent nodes with smallest edges using a min heap
 
