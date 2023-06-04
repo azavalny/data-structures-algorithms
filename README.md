@@ -161,9 +161,9 @@ Nice to Know:
 * better for finding shortest path between 2 nodes than DFS because it discovers verticies in increasing order of distance, and which verticies are reachable from a node (quickly finds its neighbors)
 ```
 def bfs(graph, node):
- visited = []
+ visited = {}
  queue = []
- visited.append(node)
+ visited.add(node)
  queue.append(node)
  
  while len(queue) > 0:# keep adding to the queue and exploring
@@ -171,7 +171,7 @@ def bfs(graph, node):
    print(s)
    for n in graph[s]: #look at all the neighboring nodes of s
      if n not in visited:
-       visited.append(n)
+       visited.add(n)
        queue.append(n)
 ```
 * runtime might seem like O(V^2 + E) (also seems like it for depth first search) because we have a nested loop, but in amortized analysis we show you don't actually visit each vertex more than once because the runtime is the degree of the current vertex + 1
@@ -186,26 +186,26 @@ def bfs(graph, node):
 
 ```
  # recursively (better)
- visited = []
+ visited = {}
  def dfs(graph, node, visited):
    if node not in visited:
      print(node)
-     visited.append(node)
+     visited.add(node)
      for n in graph[node]:
        dfs(graph, n, visited)
          
 # iteratively
 def dfs(graph, node):
-  visited = []
+  visited = {}
   stack = []
-  visited.append(node)
+  visited.add(node)
   stack.append(node)
   
   while len(stack) > 0:
     s = stack.pop(0)
     if n not in visited:
       print(s)
-      visited.append(n)
+      visited.add(n)
     for n in reversed(graph(s)): #because a stack is first in first out, we visit first seen paths
       stack.apppend(n)
 ```
