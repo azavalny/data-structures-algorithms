@@ -299,3 +299,22 @@ for v in V:
 ```
 * Floyd Warshall can **detect negative cycles** if the **diagonals are negative**
 * by comparison, using Dijkstra's to find all pair shortest paths would take O(V^2 * VlogV) and Bellman ford O(V^2 * VE)
+
+_______
+***Anything hereafter is beyond the scope of the class, but could show up in Leetcode and Coding Interviews***
+
+### Union Find
+* whenever you have a **disjoint** graph or **disjoint** set, this is where Union Find is most naturally used especially for finding number of connected components
+* Union merges 2 groups in O(n) while Find figures out what group an element belongs to in O(n)
+* You typically:
+```
+def find(node):
+   while node != parent[node]:
+      parent[node] = parent[parent[node]]
+      node = parent[node]
+   return node
+
+def union(node1, node2):
+  p1 = find(node1)
+  p2 = find(node2)
+```
