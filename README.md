@@ -1,13 +1,13 @@
 # Data Structures & Algorithms
-Data Structures and Algorithms reference guide that come from a C-based Data Structures and Algorithms course. I try to state definitions and usecases in my own words to help clarify common questions and precisely compare different algorithms and data structures.
+A Comprehensive Data Structures and Algorithms reference guide that originated from a C-based Data Structures and Algorithms course. I try to state definitions and exampkes in my own words to help clarify common questions and precisely compare different algorithms and data structures.
 
-### Most of the illustrations below are taken from one of my favorite TA's of all time and [their notes from this class](https://charlierose.dev/ref/cs260.pdf)
+### Some of the illustrations below are taken from one of my favorite TA's of all time and [their notes from this class](https://charlierose.dev/ref/cs260.pdf)
 
 ## Arraylists/Lists/Dynamic Arrays
 * O(1) access by index, O(n) by searching (if unsorted)
 
-## Hashtables/Hashmaps/Hashsets/Dictionaries
-* maps keys to values with O(1) lookup 
+## Hashtables/Hashmaps/Hashsets/Dictionaries/Lookup Tables
+* all of these terms mean the same idea: **map keys to values with O(1) lookup**
 * stored in linkedlists or arraylists to avoid collisions, known as **chaining** with an **Open Hash Table**, or use **open addressing** to associate keys with sequences and store the new key in the next open item in the sequence with a **Closed Hash Table** (though you need to double the size and rehash values if you run out of space)
 * put (key, value) into hash table and get(key) value 
 ![Alt text](/images/hashtable.png)
@@ -301,7 +301,13 @@ for v in V:
 * by comparison, using Dijkstra's to find all pair shortest paths would take O(V^2 * VlogV) and Bellman ford O(V^2 * VE)
 
 _______
-***Anything hereafter is beyond the scope of the class, but could show up in Leetcode and Coding Interviews***
+***Anything hereafter is beyond the scope of the original class, but does show up in Leetcode and Coding Interview Problems which preparing for is typically the main motivation for most people behind studying these data structures and algorithms***
+
+### Dynamic Programming
+* break down a problem into smaller sub-problems (that all depend on each other), store the calculations of those sub-problems in an array or hash table, and then reuse them to find the overall solution
+* commonly used whenever you have to find the min/max or optimal of something
+
+  
 
 ### Union Find
 * whenever you have a **disjoint** graph or **disjoint** set, this is where Union Find is most naturally used especially for finding number of connected components
