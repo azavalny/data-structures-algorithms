@@ -254,10 +254,10 @@ Basic ideas:
   * adding a detour to a path will usually increase the path length than going directly to the destination
 
 ### Bellman-Ford Algorithm
-* finds shortest path from a source to all other verticies in a weighted graph in O(VE) (with no negative cycles)
+* finds shortest path from a source to all other vertices in a weighted graph in O(VE) (with no negative cycles)
 * set all nodes to $\infty$
 * starts with an estimate and re-examines edges to converge it to the shortest paths
-* iterate through all verticies and re-examine all edges
+* iterate through all vertices and re-examine all edges
   *set their values to be the shortest path from the source found by adding the values of the previous nodes on the same path
   * we **"Relax"** the edges by comparing the new path and the old path we initially found and choosing the smaller of the paths to set the next node to be, otherwise we don't change the next node
   * **there can only be |V| -1 edges in a path**, otherwise |V| or more indicates a cycle since we would have a repeated vertex
@@ -267,7 +267,7 @@ Basic ideas:
 * can terminate early depending on how smart you pick the order of edges to traverse if the edges don't improve anything
 
 ### Dijkstra's Algorithm
-* finds shortest path from a source to all other verticies in a weighted graph in O(Vlogv + ElogV) (with no negative weights)
+* finds shortest path from a source to all other vertices in a weighted graph in O(Vlogv + ElogV) (with no negative weights)
 ![Alt-text](/images/lovedijk.png)
 * **greedy algorithm** that uses a min heap to select smallest edge to visit
 * set all nodes to $\infty$
@@ -276,12 +276,12 @@ Basic ideas:
     * we also upheap the neighboring edges which takes O(logV) so that extract min is in O(1)
   * set next node to values of shortest path by relaxing the neighboring edges of the min edge we just extracted
      * unlike in Bellman-Ford, we don't relax edges V times, we do it in O(ElogV) for each vertex V
-* Dijkstra's dosen't work work negative edges, because once it visits a node it assumes its found the shortest path and won't revisit it
-  *which means that if a negative edge exists somewhere it may not be found and Dijkstra's won't create the actual shortest path for verticies that could be shortened with negative edges
+* Dijkstra's dosen't work with negative edges, because once it visits a node it assumes its found the shortest path and won't revisit it
+  *which means that if a negative edge exists somewhere it may not be found and Dijkstra's won't create the actual shortest path for vertices that could be shortened with negative edges
   * This is an issue of the Greedy approach since we assumed that the minimality won't changed if we add a number to any vertex path, which is only true for positive numbers
   
 ### Floyd Warshall Algorithm
-* finds the shortest paths between all pairs of verticies in O(V^3) in matrix form
+* finds the shortest paths between all pairs of vertices in O(V^3) in matrix form
 * initialize entries to neighboring edges
 * for each pair of nodes find the cost of the shortest path by adding intermediary nodes and see if they improve the shortest path:
   * given $D^{k-1}(u,v)$, we want to see if:
@@ -306,13 +306,44 @@ _______
 ### Dynamic Programming
 * break down a problem into smaller sub-problems (that all depend on each other), store the calculations of those sub-problems in an array or hash table, and then reuse them to find the overall solution
 * commonly used whenever you have to find the min/max or optimal of something
+* is done through **Memoization** with a recursively called function
+Example:
+Finding the nth Fibonacci number is the same as the sum of the previous two Fibonacci numbers. With our 2 base cases
+```
+def fib(n):
+   memo = {}
+   memo[0] = 0
+   memo[1] = 1
+   
+   def fibHelper(n, memo):
+       if n in memo:
+           return memo[n]
+       else:
+           memo[n] = fibHelper(n-1, memo) + fibHelper(n-2, memo)
+           return memo[n]
+   return fibHelper(n, memo)
+```
 
+* is also done with a **Bottom Up** approach where we create an array or hash table, store calculations in it, and iterate through them oftentimes using the index as the key and its calculated value as the value
+Example:
+For the climbing stairs problem (the same as Fibonacci), you can climb 1 or 2 steps, and to find the distinct number of ways to climb to the top we just reuse the previous two-step calculations
+```
+def climbStairs(self) -> int:
+   dp = [0]*(n+1)
+   dp[0] = 1
+   dp[1] = 1
+   for i in range(2, n+1):
+       dp[i] = dp[i-1] + dp[i-2]
+   return dp[n]
+```
+
+* you'll also notice while Dynamic Programming problems can be the most difficult data structures and algorithms problems, they usually have a very simple and short solution to them
   
 
 ### Union Find
 * whenever you have a **disjoint** graph or **disjoint** set, this is where Union Find is most naturally used especially for finding number of connected components
 * Union merges 2 groups in O(n) by unifying one root node of one group to the root node of the other group to make one of the root nodes be the parent of the other
-* Find figures out what group an element belongs to in O(n) by following the parent nodes until a self loop if reached (a node who's parent is itself)
+* Find figures out what group an element belongs to in O(n) by following the parent nodes until a self-loop if reached (a node who's parent is itself)
 * You typically:
 ```
 def find(node):
