@@ -260,7 +260,7 @@ Basic ideas:
 * iterate through all vertices and re-examine all edges
   *set their values to be the shortest path from the source found by adding the values of the previous nodes on the same path
   * we **"Relax"** the edges by comparing the new path and the old path we initially found and choosing the smaller of the paths to set the next node to be, otherwise we don't change the next node
-  * **there can only be |V| -1 edges in a path**, otherwise |V| or more indicates a cycle since we would have a repeated vertex
+  * **there can only be |V| - 1 edges in a path**, otherwise |V| or more indicates a cycle since we would have a repeated vertex
   * intuitively, after the first iteration we keep checking if the edges offer any improvement to the shortest path 
 * ends the program and returns if there exists at least one negative weight cycle
   * a negative cycle implies there dosen't exist a shortest path
