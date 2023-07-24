@@ -267,8 +267,8 @@ Basic ideas:
 * can terminate early depending on how smart you pick the order of edges to traverse if the edges don't improve anything
 
 ### Dijkstra's Algorithm
+[!Alt-text](https://raw.githubusercontent.com/thelazyaz/data-structures-algorithms/master/images/lovedijk.png)
 * finds shortest path from a source to all other vertices in a weighted graph in O(Vlogv + ElogV) (with no negative weights)
-![Alt-text](/images/lovedijk.png)
 * **greedy algorithm** that uses a min heap to select smallest edge to visit
 * set all nodes to $\infty$
 * examine edges leaving node and choose the smallest edge that hasn't been seen before:
