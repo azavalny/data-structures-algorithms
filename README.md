@@ -279,7 +279,29 @@ Basic ideas:
 * Dijkstra's dosen't work with negative edges, because once it visits a node it assumes its found the shortest path and won't revisit it
   *which means that if a negative edge exists somewhere it may not be found and Dijkstra's won't create the actual shortest path for vertices that could be shortened with negative edges
   * This is an issue of the Greedy approach since we assumed that the minimality won't changed if we add a number to any vertex path, which is only true for positive numbers
-  
+```
+def dijkstra(self, start):
+   D = {v:float('inf') for v in range(self.v)}
+   D[start] = 0
+
+   pq = PriorityQueue()
+   pq.put((0, start))
+   while not pq.empty():
+       (dist, curr) = pq.get()
+       self.visited.append(curr)
+       for neighbor in range(self.v):
+            if self.edges[curr][neighbor] != -1:
+                 distance = self.edges[curr][neighbor]
+                 if neighbor not in self.visited:
+                      old_cost = D[neighbor]
+                      new_cost = D[curr] + distance
+                      if new_cost < old_cost:
+                             pq.put((new_cost, neighbor))
+                             D[neighbor] = new_cost
+   return D
+                  
+```
+ 
 ### Floyd Warshall Algorithm
 * finds the shortest paths between all pairs of vertices in O(V^3) in matrix form
 * initialize entries to neighboring edges
