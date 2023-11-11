@@ -420,7 +420,7 @@ Given a problem **P**, if you want to prove its as hard as an NP-Hard problem, y
 3. If **A** is easy, **B** could be anything. Just because you can't solve **A** in polynomial time with **B** dosen't mean you can't use any other polynomial algorithm to try to solve **A**
 4. If **B** is easy, **A** is easy
 
-* **NP** is Nondeterministic Polynomial means a **solution** to an NP problem can be **verified in polynomial time** even if the algorithm's solution is non polynomial
+* **NP** is Nondeterministic Polynomial means a **solution** to an NP problem can be **verified in polynomial time** even if the algorithm's solution is non polynomial. We don't know whether an NP problem is in P
 * **NP Complete** is NP problems that are also as hard as NP Hard problems. If any NP-complete problem can be solved quickly (in polynomial time), then all problems in NP can also be solved quickly. Their solutions are verifiable in polynomial time
 * **NP Hard** is a problem at least as hard as NP. If you can solve an NP Hard problem in polynomial time, you can solve all NP problems in polynomial time
 
