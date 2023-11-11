@@ -1,5 +1,5 @@
-# Data Structures & Algorithms
-A Comprehensive Data Structures and Algorithms reference guide that originated from a C-based Data Structures and Algorithms course. I try to state definitions and exampkes in my own words to help clarify common questions and precisely compare different algorithms and data structures.
+# The Ultimate Data Structures & Algorithms Guide
+A Comprehensive Data Structures and Algorithms reference guide that originated from a C-based Data Structures and Algorithms course. I try to state definitions and examples in my own words to help clarify common questions and precisely compare different algorithms and data structures. I also include other concepts from my upper level algorithms and theory courses to supplement your DS&A knowledge. 
 
 ### Some of the illustrations below are taken from one of my favorite TA's of all time and [their notes from this class](https://charlierose.dev/ref/cs260.pdf)
 
@@ -421,8 +421,8 @@ Given a problem **P**, if you want to prove its as hard as an NP-Hard problem, y
 4. If **B** is easy, **A** is easy
 
 * **NP** is Nondeterministic Polynomial means a **solution** to an NP problem can be **verified in polynomial time** even if the algorithm's solution is non polynomial. We don't know whether an NP problem is in P
-* **NP Complete** is NP problems that are also as hard as NP Hard problems. If any NP-complete problem can be solved quickly (in polynomial time), then all problems in NP can also be solved quickly. Their solutions are verifiable in polynomial time
-* **NP Hard** is a problem at least as hard as NP. If you can solve an NP Hard problem in polynomial time, you can solve all NP problems in polynomial time
+* **NP-Complete** is NP problems that are also as hard as NP-Hard problems. If any NP-complete problem can be solved quickly (in polynomial time), then all problems in NP can also be solved quickly. Their solutions are verifiable in polynomial time
+* **NP-Hard** is a problem at least as hard as NP. If you can solve an NP-Hard problem in polynomial time, you can solve all NP problems in polynomial time
 
 * Cook Levin theorem says all NP Problems can be converted into a satisfiability problem
 
@@ -432,4 +432,33 @@ Given a problem **P**, if you want to prove its as hard as an NP-Hard problem, y
      * 3SAT
      * Integer Partition
      * Vertex Cover
-     * Hamiltonian Path and Cycle
+     * Hamiltonian Cycle
+
+## Common NP-Complete Reduction Algorithms:
+* 3 Variable Satisfiability (3SAT, or really any SAT):
+   * Generate all $2^{n}$ permutations of true/false values for each $k$ variables
+   * for each permutation:
+      * try the variables to see if they work and if they do, return the permutation
+   * $\Theta(2^{n} \cdot k$ worst case you have to try all $k$ clauses for all $n$ variables
+   * $O(2^{n} \cdot n^{3}) for 3SAT where we have $2n$ choices for $3$ clauses and ~$n^3$ max number of unique clauses from $2n \choose 3$
+* Hamiltonian Cycle to Travelling Salesman Problem
+   * Hamiltonian Cycle checks if all nodes can be visited once in a graph
+      * for every vertex
+         * for every vertex
+            * if (i, j) $\in E$, w(i, j) = 1 meaning we set the edges in the original graph to 1
+            * else w(i, j) = 2 where we set the the introduced edges to 2
+    * return Travelling Salesman for size n
+    * This reduction algorithm runs in $O(V^{2}$)
+* Vertex Cover to independent Set
+  * is there a set of $k$ vertices such that every edge contains at least 1 vertex in the set?
+  * Invert the edges
+  * set $k^{'} = |V| - k$
+  * return Independent Set(Inverted Graph, complementary k) where independent set finds an independent set of $k$ vertices
+* Independent Set to Max Clique
+  * Max Clique asks if a graph has a clique (set of vertices where every pair of vertices defines an edge)
+  * Independent Set
+    * Invert the graph
+    * for every edge (i, j) not in $E$:
+       * add (i, j) to inverted edges of inverted graph
+    *  Return Clique(inverted graph, k vertices)
+* 3SAT to Vertex Cover 
