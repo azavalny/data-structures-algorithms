@@ -299,7 +299,34 @@ def dijkstra(self, start):
                              pq.put((new_cost, neighbor))
                              D[neighbor] = new_cost
    return D
-                  
+
+# for single source shortest path between 2 nodes:
+        self.INF = float("inf")
+        self.n = n
+
+        adj_list = collections.defaultdict(list)
+        for u, v, c in edges:
+            adj_list[u].append((v,c))
+        self.adj_list = adj_list
+
+   def shortestPath(self, node1: int, node2: int) -> int:
+           h = []
+           best = [self.INF]*self.n
+           heapq.heappush(h, (0, node1))
+           best[node1] = 0
+   
+           while len(h) > 0:
+               d, current = heapq.heappop(h)
+   
+               if current == node2:
+                   return d
+               if best[current] > d:
+                   continue
+               for v,c in self.adj_list[current]:
+                   if best[v] > d + c:
+                       best[v] = d + c
+                       heapq.heappush(h, (d + c, v))
+           return -1
 ```
  
 ### Floyd Warshall Algorithm
