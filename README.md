@@ -3,6 +3,8 @@ A Comprehensive Data Structures and Algorithms reference guide that originated f
 
 ### Some of the illustrations below are taken from one of my favorite TA's of all time and [their notes from this class](https://charlierose.dev/ref/cs260.pdf)
 
+### [To bottom](#hard-algorithms)
+
 ## Arraylists/Lists/Dynamic Arrays
 * O(1) access by index, O(n) by searching (if unsorted)
 
