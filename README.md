@@ -406,3 +406,28 @@ def union(node1, node2):
   p2 = find(node2)
 ```
 * is also used for path compression
+  
+
+# Hard Algorithms
+By **hard**, we mean a problem that does not have a polynomial solution to it. Like how when you play chess, you must make a tree of moves. All problems are either decision problems (yes or no answer), or optimization problems (find min or max of something). You can convert an optimization problem to a decision problem if you reword the problem by asking if such an optimization of a value exists. 
+
+Given a problem **P**, if you want to prove its as hard as an NP-Hard problem, you can **reduce** it (reduction itself should be done in polynomial time). Given two problems **A** and **B**:
+* if I can convert **A** => **B**
+1. If **A** is hard, then **B** is at least as hard
+2. If **B** is hard, then we don't know about **A**. We can use a hard problem to solve an easy problem, but we can't use an easy problem to solve a hard problem
+3. If **A** is easy, **B** could be anything. Just because you can't solve **A** in polynomial time with **B** dosen't mean you can't use any other polynomial algorithm to try to solve **A**
+4. If **B** is easy, **A** is easy
+
+* **NP** is Nondeterministic Polynomial means a **solution** to an NP problem can be **verified in polynomial time** even if the algorithm's solution is non polynomial
+* **NP Complete** is NP problems that are also as hard as NP Hard problems. If any NP-complete problem can be solved quickly (in polynomial time), then all problems in NP can also be solved quickly. Their solutions are verifiable in polynomial time
+* **NP Hard** is a problem at least as hard as NP. If you can solve an NP Hard problem in polynomial time, you can solve all NP problems in polynomial time
+
+* Cook Levin theorem says all NP Problems can be converted into a satisfiability problem
+
+* For proving hardness:
+  * Source problem should be as simple and restricted while the target is as hard as possible
+   * Source problem should be:
+     * 3SAT
+     * Integer Partition
+     * Vertex Cover
+     * Hamiltonian Path and Cycle
