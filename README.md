@@ -420,9 +420,9 @@ Given a problem **P**, if you want to prove its as hard as an NP-Hard problem, y
 3. If **A** is easy, **B** could be anything. Just because you can't solve **A** in polynomial time with **B** dosen't mean you can't use any other polynomial algorithm to try to solve **A**
 4. If **B** is easy, **A** is easy
 
-* **NP** is Nondeterministic Polynomial means a **solution** to an NP problem can be **verified in polynomial time** even if the algorithm's solution is non polynomial. We don't know whether an NP problem is in P
-* **NP-Complete** is NP problems that are also as hard as NP-Hard problems. If any NP-complete problem can be solved quickly (in polynomial time), then all problems in NP can also be solved quickly. Their solutions are verifiable in polynomial time
-* **NP-Hard** is a problem at least as hard as NP. If you can solve an NP-Hard problem in polynomial time, you can solve all NP problems in polynomial time
+* **NP** is Nondeterministic Polynomial means a **solution** to an NP problem can be **verified in polynomial time** but we don't know if it's solvable in polynomial time
+* **NP-Complete** is NP problems that are also as hard as NP-Hard problems. If any NP-complete problem can be solved quickly (in polynomial time), then all problems in NP can also be solved quickly
+* **NP-Hard** is a problem at least as hard as NP. We don't know if it's solvable or verifiable in P. If you can solve an NP-Hard problem in polynomial time, you can solve all NP problems in polynomial time
 
 * Cook Levin theorem says all NP Problems can be converted into a satisfiability problem
 
@@ -440,7 +440,7 @@ Given a problem **P**, if you want to prove its as hard as an NP-Hard problem, y
    * for each permutation:
       * try the variables to see if they work and if they do, return the permutation
    * $\Theta(2^{n} \cdot k$ worst case you have to try all $k$ clauses for all $n$ variables
-   * $O(2^{n} \cdot n^{3}) for 3SAT where we have $2n$ choices for $3$ clauses and ~$n^3$ max number of unique clauses from $2n \choose 3$
+   * $O(2^{n} \cdot n^{3})$ for 3SAT where we have $2n$ choices for $3$ clauses and ~$n^3$ max number of unique clauses from $2n \choose 3$
 * Hamiltonian Cycle to Travelling Salesman Problem
    * Hamiltonian Cycle checks if all nodes can be visited once in a graph
       * for every vertex
