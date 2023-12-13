@@ -422,7 +422,7 @@ Given a problem **P**, if you want to prove its as hard as an NP-Hard problem, y
 
 * **NP** is Nondeterministic Polynomial means a **solution** to an NP problem can be **verified in polynomial time** but we don't know if it's solvable in polynomial time
 * **NP-Complete** is NP problems that are also as hard as NP-Hard problems. If any NP-complete problem can be solved quickly (in polynomial time), then all problems in NP can also be solved quickly
-* **NP-Hard** is a problem at least as hard as NP. We don't know if it's solvable or verifiable in P. If you can solve an NP-Hard problem in polynomial time, you can solve all NP problems in polynomial time
+* **NP-Hard** is a problem at least as hard but can be harder than NP. We don't know if it's solvable or verifiable in P. If you can solve an NP-Hard problem in polynomial time, you can solve all NP problems in polynomial time
 
 * Cook Levin theorem says all NP Problems can be converted into a satisfiability problem
 
