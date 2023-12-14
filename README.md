@@ -439,7 +439,7 @@ Given a problem **P**, if you want to prove its as hard as an NP-Hard problem, y
    * Generate all $2^{n}$ permutations of true/false values for each $k$ variables
    * for each permutation:
       * try the variables to see if they work and if they do, return the permutation
-   * $\Theta(2^{n} \cdot k$ worst case you have to try all $k$ clauses for all $n$ variables
+   * $\Theta(2^{n} \cdot k)$ worst case you have to try all $k$ clauses for all $n$ variables
    * $O(2^{n} \cdot n^{3})$ for 3SAT where we have $2n$ choices for $3$ clauses and ~$n^3$ max number of unique clauses from $2n \choose 3$
 * Hamiltonian Cycle to Travelling Salesman Problem
    * Hamiltonian Cycle checks if all nodes can be visited once in a graph
@@ -461,4 +461,8 @@ Given a problem **P**, if you want to prove its as hard as an NP-Hard problem, y
     * for every edge (i, j) not in $E$:
        * add (i, j) to inverted edges of inverted graph
     *  Return Clique(inverted graph, k vertices)
-* 3SAT to Vertex Cover 
+* 3SAT to Vertex Cover
+  * create $2V$ variables so that each vertex can be either included or not included in the cover to have $n$ variables. Put an edge between each variable and their negation.
+  * for each $k$ clauses create "gadgets" that connect the clause vertices in a triangle. Put edge between variable and their places in clause triangle
+  * If vertex cover of size $n + 2k$ exists then that implies the original expression is satisfiable
+![Alt text](/images/VCexample.gif)
