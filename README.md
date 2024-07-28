@@ -1,5 +1,5 @@
 # The Ultimate Data Structures & Algorithms Guide
-A Comprehensive Data Structures and Algorithms reference guide that originated from a C-based Data Structures and Algorithms course. I try to state definitions and examples in my own words to help clarify common questions and precisely compare different algorithms and data structures. I also include other concepts from my upper level algorithms and theory courses to supplement your DS&A knowledge. 
+A Comprehensive Data Structures and Algorithms reference guide that originated from a C-based Data Structures and Algorithms course, and have expanded as I have taken more algorithms courses from college and algorithms questions for software engineering interviews. I try to state definitions and examples in my own words to help clarify common questions and precisely compare different algorithms and data structures. I also include other concepts from my upper level algorithms and theory courses to supplement your DS&A knowledge.
 
 ### Some of the illustrations below are taken from one of my favorite TA's of all time and [their notes from this class](https://charlierose.dev/ref/cs260.pdf)
 
@@ -29,6 +29,8 @@ A Comprehensive Data Structures and Algorithms reference guide that originated f
 * **pop() and push() from the top**, peek(), and isEmpty() are O(1), but O(n) to access a certain element
 ![Alt text](/images/stack.png)
 
+Stacks are often used with backtracking algorithms and can be used with depth first search. Anything dealing with symbolic computation or notation problems often use stacks.
+
 ## Queues
 * FIFO (first in, first out), elements are added to the back of the queue
 * also implemented as linked list or arraylist
@@ -37,6 +39,17 @@ A Comprehensive Data Structures and Algorithms reference guide that originated f
 
 ### Priority Queues
 * elements added via comparison and have ordering or weighting to them
+
+
+## More useful Array algorithms
+
+### Two Pointer
+Use two pointers to iterate through an array often bringing array problems from $O(n^2)$ to $O(n)$. This can be done in two ways:
+1. Left pointer at the start of the array and right pointer at the end. While left < right, you move through the entire array at once. The Two Sum series, container with most rainwater, and trapping rainwater are great examples.
+2. You can use the two pointer approach with linked lists by having a slow and fast pointer (pointer iterating through two nodes at a time) for many linkedlist problems. 
+
+### Sliding Window
+
 
 ## Sorting & Searching Algorithms
 Essential:
