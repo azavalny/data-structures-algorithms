@@ -421,7 +421,89 @@ def union(node1, node2):
   p2 = find(node2)
 ```
 * is also used for path compression
-  
+* 
+
+### Knuth Morris Pratt (KMP) Pattern Searching Algorithm
+Return all indicies of occurences of a string **pat** within another larger string **txt**. 
+Whenever we detect a mismatch after some matches, we already know some of the characters in the text of the next window, so we can avoid matching the characters that we know will anyway match. As we slide the window, we only have to compare the next character after the window to avoid recomparing the same *n-1* characters from the previous window. Each value, lps[i] is the length of longest proper prefix of pat[0..i] which is also a suffix of pat[0...i]
+
+We do this using a longest proper prefix (LPS or suffix) array that tells us the amount of characters to be skipped as a preprocessing step. A proper prefix is a prefix that doesn't include whole string. For example, prefixes of "abc" are "", "a", "ab" and "abc" but proper prefixes are "", "a" and "ab" only. Suffixes of the string are "", "c", "bc", and "abc".
+```
+def constructLps(pat, lps):
+    
+    # len stores the length of longest prefix which 
+    # is also a suffix for the previous index
+    len_ = 0
+    m = len(pat)
+    
+    # lps[0] is always 0
+    lps[0] = 0
+
+    i = 1
+    while i < m:
+        
+        # If characters match, increment the size of lps
+        if pat[i] == pat[len_]:
+            len_ += 1
+            lps[i] = len_
+            i += 1
+        
+        # If there is a mismatch
+        else:
+            if len_ != 0:
+                
+                # Update len to the previous lps value 
+                # to avoid redundant comparisons
+                len_ = lps[len_ - 1]
+            else:
+                
+                # If no matching prefix found, set lps[i] to 0
+                lps[i] = 0
+                i += 1
+
+def search(pat, txt):
+    n = len(txt)
+    m = len(pat)
+
+    lps = [0] * m
+    res = []
+
+    constructLps(pat, lps)
+
+    # Pointers i and j, for traversing 
+    # the text and pattern
+    i = 0
+    j = 0
+
+    while i < n:
+        
+        # If characters match, move both pointers forward
+        if txt[i] == pat[j]:
+            i += 1
+            j += 1
+
+            # If the entire pattern is matched 
+            # store the start index in result
+            if j == m:
+                res.append(i - j)
+                
+                # Use LPS of previous index to 
+                # skip unnecessary comparisons
+                j = lps[j - 1]
+        
+        # If there is a mismatch
+        else:
+            
+            # Use lps value of previous index
+            # to avoid redundant comparisons
+            if j != 0:
+                j = lps[j - 1]
+            else:
+                i += 1
+    return res
+```
+Code from: https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/
+
 
 # Hard Algorithms
 By **hard**, we mean a problem that does not have a polynomial solution to it. Like how when you play chess, you must make a tree of moves. All problems are either decision problems (yes or no answer), or optimization problems (find min or max of something). You can convert an optimization problem to a decision problem if you reword the problem by asking if such an optimization of a value exists. 
